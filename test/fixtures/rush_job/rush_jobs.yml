@@ -1,0 +1,40 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+job_argument:
+  id: 1
+  handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: TestHandler\n  arguments:\n  - arg1"
+  priority: 0
+  last_error: 'Something went wrong'
+  run_at: <%= 2.minutes.ago%>
+  locked_at: <%= 1.minute.ago %>
+  failed_at: <%= Time.zone.now %>
+  locked_by: 'Test server'
+  queue: 'Test queue'
+
+job_no_arguments:
+  id: 2
+  handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: TestHandler\n  arguments: []"
+  priority: 1
+  last_error: 'Something went wrong'
+  run_at: <%= 2.minutes.ago %>
+  locked_at: <%= 1.minute.ago %>
+  failed_at: <%= Time.zone.now %>
+  locked_by: 'Test server'
+  queue: 'Test queue'
+
+<% 25.times do |n| %>
+job<%= n %>:
+  id: <%= n + 3 %>
+  handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: JobHandler\n  arguments:\n  - job"
+  priority: <%= n %>
+  last_error: <%= "JobError#{n}" %>
+  run_at: <%= n.minutes.ago %>
+  locked_at: <%= n.minutes.ago %>
+  failed_at: <%= n.minutes.ago %>
+  locked_by: <%= "JobServer#{n}" %>
+  queue: <%= "JobQueue#{n}" %>
+<% end %>
