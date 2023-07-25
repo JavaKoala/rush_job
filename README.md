@@ -2,7 +2,8 @@
 User interface for Delayed Job (https://github.com/collectiveidea/delayed_job) in Ruby on Rails 
 
 ### Note
-This has only been tested with SQLite and Postgresql.
+ - This has only been tested with SQLite and Postgresql.
+ - This app uses cookies to store the dark mode selection.
 
 ## Usage
 You will need Delayed Job, `delayed_job`, and Delayed Job ActiveRecord, `delayed_job_active_record`, installed in a Ruby on Rails application for this gem to work properly.

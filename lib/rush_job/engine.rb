@@ -17,9 +17,10 @@ module RushJob
         rush_job/application.css
         rush_job/application.scss
         rush_job/application.js
-        rush_job/arrow-up.svg
-        rush_job/arrow-down.svg
-        rush_job/bootstrap.bundle.min.js
+        rush_job/arrow-up-light.svg
+        rush_job/arrow-up-dark.svg
+        rush_job/arrow-down-light.svg
+        rush_job/arrow-down-dark.svg
         rush_job_manifest.js
       ]
     end
