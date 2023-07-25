@@ -1,8 +1,8 @@
 module RushJob
   require 'importmap-rails'
-  require 'bootstrap'
   require 'pagy'
   require 'pagy/extras/bootstrap'
+  require 'sassc-rails'
 
   class Engine < ::Rails::Engine
     isolate_namespace RushJob
@@ -17,8 +17,10 @@ module RushJob
         rush_job/application.css
         rush_job/application.scss
         rush_job/application.js
+        rush_job/arrow-up.svg
+        rush_job/arrow-down.svg
+        rush_job/bootstrap.bundle.min.js
         rush_job_manifest.js
-        bootstrap.min.js
       ]
     end
   end

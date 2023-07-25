@@ -5,11 +5,11 @@ PATH
       actionview (~> 7.0)
       activerecord (~> 7.0)
       activesupport (~> 7.0)
-      bootstrap (~> 5.2)
       delayed_job (~> 4.1)
       delayed_job_active_record (~> 4.1)
       importmap-rails (~> 1.2)
       pagy (~> 6.0)
+      sassc-rails (~> 2.1)
 
 GEM
   remote: https://rubygems.org/
@@ -40,12 +40,6 @@ GEM
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
-    autoprefixer-rails (10.4.13.0)
-      execjs (~> 2)
-    bootstrap (5.2.3)
-      autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 2.11.6, < 3)
-      sassc-rails (>= 2.0.0)
     brakeman (6.0.0)
     builder (3.2.4)
     capybara (3.39.2)
@@ -69,7 +63,6 @@ GEM
       delayed_job (>= 3.0, < 5)
     docile (1.4.0)
     erubi (1.12.0)
-    execjs (2.8.1)
     ffi (1.15.5)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -96,7 +89,6 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
-    popper_js (2.11.7)
     public_suffix (5.0.1)
     puma (6.3.0)
       nio4r (~> 2.0)
