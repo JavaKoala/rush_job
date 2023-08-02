@@ -30,5 +30,13 @@ module RushJob
       assert_select 'td:nth-child(10)', @rush_job.locked_by
       assert_select 'td:nth-child(11)', @rush_job.queue
     end
+
+    test 'invalid pagination' do
+      get '/rush_job?page=100'
+
+      assert_redirected_to root_path
+
+      assert_equal 'No jobs on that page, redirected to first page.', flash[:notice]
+    end
   end
 end

@@ -39,5 +39,12 @@ module RushJob
       assert_selector '#rush-job-down-arrow'
       assert_text 'Test queue'
     end
+
+    test 'invalid page number' do
+      visit '/rush_job?page=100'
+
+      assert_current_path '/rush_job/'
+      assert_text 'No jobs on that page, redirected to first page.'
+    end
   end
 end

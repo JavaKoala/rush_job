@@ -4,6 +4,7 @@ en:
   delayed_title: "Delayed jobs"
   failed_at: "Failed at"
   id: "Id"
+  invalid_page_notice: "No jobs on that page, redirected to first page."
   job_class: "Job class"
   last_error: "Last error"
   locked_at: "Locked at"
