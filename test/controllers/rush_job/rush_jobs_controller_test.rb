@@ -15,6 +15,12 @@ module RushJob
       assert_response :success
     end
 
+    test 'should get index with xhr request' do
+      get '/rush_job', xhr: true
+
+      assert_response :success
+    end
+
     test 'should display delayed jobs' do
       get '/rush_job'
 

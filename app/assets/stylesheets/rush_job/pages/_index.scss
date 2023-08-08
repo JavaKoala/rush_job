@@ -11,6 +11,29 @@
   margin-top: 0.5rem;
 }
 
+.polling-container {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.polling-range-form-label-dark {
+  color: rgb(0, 0, 0);
+  margin-bottom: 0.5rem;
+}
+
+.polling-range-form-label-light {
+  color: rgb(255, 255, 255);
+  margin-bottom: 0.5rem;
+}
+
+.form-check-label-dark {
+  color: rgb(0, 0, 0);
+}
+
+.form-check-label-light {
+  color: rgb(255, 255, 255);
+}
+
 .jobs-container {
   margin-left: 5%;
   margin-right: 5%;
@@ -32,4 +55,8 @@
 
 .page-item:last-child .page-link {
   color: rgb(68, 110, 155);
+}
+
+.table-refresh {
+  opacity: 0.3;
 }

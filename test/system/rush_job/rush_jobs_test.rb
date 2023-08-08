@@ -12,17 +12,6 @@ module RushJob
       assert_css '.pagination'
     end
 
-    test 'reload button' do
-      visit '/rush_job'
-      assert_selector '#rush-job-up-arrow'
-
-      click_link 'Id'
-      assert_selector '#rush-job-down-arrow'
-
-      click_button 'Reload'
-      assert_selector '#rush-job-down-arrow'
-    end
-
     test 'sorting' do
       visit '/rush_job'
       assert_text 'Test queue'

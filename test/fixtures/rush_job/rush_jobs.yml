@@ -38,3 +38,25 @@ job<%= n %>:
   locked_by: <%= "JobServer#{n}" %>
   queue: <%= "JobQueue#{n}" %>
 <% end %>
+
+penultimate_job:
+  id: 99
+  handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: TestHandler\n  arguments: []"
+  priority: 1
+  last_error: 'Penultimate job error'
+  run_at: <%= 2.minutes.ago %>
+  locked_at: <%= 1.minute.ago %>
+  failed_at: <%= Time.zone.now %>
+  locked_by: ''
+  queue: 'Test queue'
+
+last_job:
+  id: 100
+  handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: TestHandler\n  arguments: []"
+  priority: 1
+  last_error: 'Last job error'
+  run_at: <%= 2.minutes.ago %>
+  locked_at: <%= 1.minute.ago %>
+  failed_at: <%= Time.zone.now %>
+  locked_by: ''
+  queue: 'Test queue'

@@ -14,7 +14,7 @@ module RushJob
       assert_no_css '.background-color-light'
       assert_button 'Light Mode'
 
-      click_button 'Reload'
+      refresh
 
       assert_css '.background-color-dark'
       assert_no_button 'Dark Mode'
