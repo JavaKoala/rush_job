@@ -17,7 +17,7 @@ module RushJob
     private
 
     def redirect_to_first_page
-      redirect_to root_path, notice: t(:invalid_page_notice)
+      redirect_to rush_jobs_path, notice: t(:invalid_page_notice)
     end
   end
 end

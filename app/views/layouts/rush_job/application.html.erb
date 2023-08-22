@@ -11,6 +11,7 @@
   <%= stylesheet_link_tag    "rush_job/application", media: "all" %>
 </head>
 <body class="background-color-<%= current_theme %>">
+  <%= render 'layouts/rush_job/navbar' %>
   <% flash.each do |type, msg| %>
     <div class="alert alert-<%= invert_theme %>" role="alert">
       <%= msg %>

@@ -12,6 +12,8 @@
  *
  */
 @import "../../../vendor/stylesheets/rush_job/bootstrap";
+@import "components/pagination";
+@import "components/polling";
 @import "themes/dark";
 @import "themes/light";
-@import "pages/index";
+@import "pages/rush_jobs_index";

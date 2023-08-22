@@ -1,8 +1,6 @@
-<div
-  id="rush-job-jobs-container"
-  class="jobs-container"
-  role="main"
->
+<div id="rush-job-jobs-container"
+     class="jobs-container"
+     role="main">
   <div class="table-responsive">
     <table class="table
                   table-bordered
@@ -44,6 +42,6 @@
   </div>
 </div>
 
-<div class="footer-container">
+<div class="footer-container" data-bs-theme="<%= current_theme %>">
   <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
 </div>

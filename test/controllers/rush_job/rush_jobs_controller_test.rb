@@ -10,19 +10,19 @@ module RushJob
     end
 
     test 'should get index' do
-      get '/rush_job'
+      get '/rush_job/rush_jobs'
 
       assert_response :success
     end
 
     test 'should get index with xhr request' do
-      get '/rush_job', xhr: true
+      get '/rush_job/rush_jobs', xhr: true
 
       assert_response :success
     end
 
     test 'should display delayed jobs' do
-      get '/rush_job'
+      get '/rush_job/rush_jobs'
 
       assert_select 'td:nth-child(1)', @rush_job.id.to_s
       assert_select 'td:nth-child(2)', @rush_job.priority.to_s
@@ -38,9 +38,9 @@ module RushJob
     end
 
     test 'invalid pagination' do
-      get '/rush_job?page=100'
+      get '/rush_job/rush_jobs?page=100'
 
-      assert_redirected_to root_path
+      assert_redirected_to rush_jobs_path
 
       assert_equal 'No jobs on that page, redirected to first page.', flash[:notice]
     end

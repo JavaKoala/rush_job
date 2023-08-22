@@ -10,7 +10,7 @@ job_argument:
   priority: 0
   last_error: 'Something went wrong'
   run_at: <%= 2.minutes.ago%>
-  locked_at: <%= 1.minute.ago %>
+  locked_at: <%= Time.zone.now %>
   failed_at: <%= Time.zone.now %>
   locked_by: 'Test server'
   queue: 'Test queue'
@@ -56,7 +56,7 @@ last_job:
   priority: 1
   last_error: 'Last job error'
   run_at: <%= 2.minutes.ago %>
-  locked_at: <%= 1.minute.ago %>
+  locked_at: nil
   failed_at: <%= Time.zone.now %>
   locked_by: ''
   queue: 'Test queue'

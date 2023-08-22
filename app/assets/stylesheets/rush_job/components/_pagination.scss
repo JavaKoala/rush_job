@@ -1,0 +1,15 @@
+.page-link.disabled, .disabled > .page-link {
+  color: rgb(68, 110, 155);
+}
+
+.page-item:first-child .page-link {
+  color: rgb(68, 110, 155);
+}
+
+.page-item:last-child .page-link {
+  color: rgb(68, 110, 155);
+}
+
+.page-link {
+  color: rgb(68, 110, 155);
+}

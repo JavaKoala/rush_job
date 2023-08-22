@@ -10,7 +10,7 @@ module RushJob
     end
 
     test 'reload button' do
-      visit '/rush_job'
+      visit '/rush_job/rush_jobs'
 
       click_link 'Id'
       assert_text 'Last job error'

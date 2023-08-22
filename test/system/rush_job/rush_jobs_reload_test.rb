@@ -9,7 +9,7 @@ module RushJob
     end
 
     test 'reload button' do
-      visit '/rush_job'
+      visit '/rush_job/rush_jobs'
 
       assert_selector '#rush-job-up-arrow'
 

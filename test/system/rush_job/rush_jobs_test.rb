@@ -3,17 +3,17 @@ require 'application_system_test_case'
 module RushJob
   class RushJobsTest < ApplicationSystemTestCase
     test 'visiting the index' do
-      visit '/rush_job'
-      assert_selector 'h2', text: 'Delayed jobs'
+      visit '/rush_job/rush_jobs'
+      assert_selector '#rush-job-jobs'
     end
 
     test 'displays pagination' do
-      visit '/rush_job'
+      visit '/rush_job/rush_jobs'
       assert_css '.pagination'
     end
 
     test 'sorting' do
-      visit '/rush_job'
+      visit '/rush_job/rush_jobs'
       assert_text 'Test queue'
 
       click_link 'Queue'
@@ -30,9 +30,9 @@ module RushJob
     end
 
     test 'invalid page number' do
-      visit '/rush_job?page=100'
+      visit '/rush_job/rush_jobs?page=100'
 
-      assert_current_path '/rush_job/'
+      assert_current_path '/rush_job/rush_jobs'
       assert_text 'No jobs on that page, redirected to first page.'
     end
   end

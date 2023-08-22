@@ -2,6 +2,9 @@ module RushJob
   class RushJob < ApplicationRecord
     self.table_name = 'delayed_jobs'
 
+    scope :locked_jobs, -> { where.not(locked_at: nil).order(locked_at: :desc) }
+    scope :queue_groups, -> { group(:queue, :priority).order(:priority).count }
+
     def job_class
       job_data[:job_class]
     end
