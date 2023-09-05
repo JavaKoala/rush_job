@@ -1,6 +1,9 @@
 # RushJob
 User interface for Delayed Job (https://github.com/collectiveidea/delayed_job) in Ruby on Rails 
 
+<img width="656" alt="Dashboard" src="docs/assets/dashboard.png">
+<img width="1244" alt="Jobs" src="docs/assets/jobs.png">
+
 ### Note
  - This has only been tested with SQLite and Postgresql.
  - This app uses cookies to store the dark mode selection.
