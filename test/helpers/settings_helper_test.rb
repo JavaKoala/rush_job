@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module RushJob
-  class ApplicationHelperTest < ActionView::TestCase
+  class SettingsHelperTest < ActionView::TestCase
     test 'returns light for the default theme' do
       assert_equal current_theme, 'light'
     end
@@ -20,6 +20,18 @@ module RushJob
       cookies[:rush_job_theme] = 'dark'
 
       assert_equal invert_theme, 'light'
+    end
+
+    test 'returns true when editing enabled' do
+      cookies[:rush_job_editing] = 'enabled'
+
+      assert_equal editing_enabled?, true
+    end
+
+    test 'returns false when editing disabled' do
+      cookies[:rush_job_editing] = 'disabled'
+
+      assert_equal editing_enabled?, false
     end
   end
 end

@@ -3,6 +3,7 @@ require 'test_helper'
 module RushJob
   class DashboardControllerTest < ActionDispatch::IntegrationTest
     include Engine.routes.url_helpers
+    self.use_transactional_tests = true
 
     setup do
       @rush_job = rush_job_rush_jobs(:job_argument)
@@ -41,11 +42,27 @@ module RushJob
         assert_select 'th:nth-child(1)', 'Name'
         assert_select 'th:nth-child(2)', 'Priority'
         assert_select 'th:nth-child(3)', 'Count'
+        assert_select 'th:nth-child(4)', false, 'Clear'
 
         assert_select 'tr:nth-child(1)' do
           assert_select 'td:nth-child(1)', 'JobQueue0'
           assert_select 'td:nth-child(2)', '0'
           assert_select 'td:nth-child(3)', '1'
+          assert_select 'td:nth-child(4)', false, 'Clear'
+        end
+      end
+    end
+
+    test 'display clear button when editing' do
+      cookies[:rush_job_editing] = 'enabled'
+
+      get '/rush_job/'
+
+      assert_select '#rush-job-dashboard-queues' do
+        assert_select 'th:nth-child(4)', 'Clear'
+
+        assert_select 'tr:nth-child(1)' do
+          assert_select 'td:nth-child(4)', 'Clear'
         end
       end
     end
@@ -56,6 +73,16 @@ module RushJob
       assert_redirected_to root_path
 
       assert_equal 'No jobs on that page, redirected to first page.', flash[:notice]
+    end
+
+    test 'delete queue' do
+      assert_difference 'RushJob.queue_groups.count', -1 do
+        delete '/rush_job/dashboard', params: { queue: @rush_job.queue, priority: @rush_job.priority }
+      end
+
+      assert_redirected_to root_path
+
+      assert_equal "Cleared queue #{@rush_job.queue}", flash[:success]
     end
   end
 end

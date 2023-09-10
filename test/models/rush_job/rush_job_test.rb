@@ -2,6 +2,8 @@ require 'test_helper'
 
 module RushJob
   class RushJobTest < ActiveSupport::TestCase
+    self.use_transactional_tests = true
+
     setup do
       @rush_job = rush_job_rush_jobs(:job_argument)
       @no_args_job = rush_job_rush_jobs(:job_no_arguments)
@@ -22,9 +24,20 @@ module RushJob
       assert_equal RushJob.queue_groups[['Test queue', 1]], 3
     end
 
-    test ' queue_groups order' do
+    test 'queue_groups order' do
       assert_equal RushJob.queue_groups.first, [['JobQueue0', 0], 1]
       assert_equal RushJob.queue_groups.to_a.last, [['JobQueue24', 24], 1]
+    end
+
+    test 'queue_group' do
+      assert_equal RushJob.queue_group(@rush_job.queue, @rush_job.priority).first, @rush_job
+      assert_equal RushJob.queue_group(@no_args_job.queue, @no_args_job.priority).first, @no_args_job
+      assert_equal RushJob.queue_group(@no_args_job.queue, @no_args_job.priority).last, @unlocked_job
+    end
+
+    test 'clear_queue' do
+      RushJob.clear_queue(@rush_job.queue, @rush_job.priority)
+      assert_empty RushJob.queue_group(@rush_job.queue, @rush_job.priority)
     end
 
     test 'job_class returns the class of the job' do

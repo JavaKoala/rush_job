@@ -53,6 +53,9 @@
             <th><%= t :name %></th>
             <th><%= t :priority %></th>
             <th><%= t :count %></th>
+            <% if editing_enabled? %>
+              <th><%= t :clear %></th>
+            <% end %>
           </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -61,6 +64,14 @@
               <td><%= queue[0] %></td>
               <td><%= queue[1] %></td>
               <td><%= @queue_groups[queue] %></td>
+              <% if editing_enabled? %>
+                <td><%= button_to t(:clear),
+                                  dashboard_path,
+                                  class: "btn btn-danger btn-sm",
+                                  method: :delete,
+                                  params: { queue: queue[0], priority: queue[1] },
+                                  data: { confirm: t(:clear_queue_confirmation, queue: queue[0]) } %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

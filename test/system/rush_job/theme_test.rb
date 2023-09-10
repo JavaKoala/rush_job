@@ -7,26 +7,30 @@ module RushJob
 
       assert_css '.background-color-light'
 
-      click_link 'Dark Mode'
+      click_link 'Options'
+      click_button 'Dark Mode'
 
       assert_css '.background-color-dark'
-      assert_no_link 'Dark Mode'
+      assert_no_button 'Dark Mode'
       assert_no_css '.background-color-light'
-      assert_link 'Light Mode'
+      click_link 'Options'
+      assert_button 'Light Mode'
 
       refresh
 
       assert_css '.background-color-dark'
-      assert_no_link 'Dark Mode'
+      assert_no_button 'Dark Mode'
       assert_no_css '.background-color-light'
-      assert_link 'Light Mode'
+      click_link 'Options'
+      assert_button 'Light Mode'
 
-      click_link 'Light Mode'
+      click_button 'Light Mode'
 
       assert_no_css '.background-color-dark'
-      assert_link 'Dark Mode'
+      click_link 'Options'
+      assert_button 'Dark Mode'
       assert_css '.background-color-light'
-      assert_no_link 'Light Mode'
+      assert_no_button 'Light Mode'
     end
   end
 end

@@ -15,6 +15,19 @@ module RushJob
                                             page_param: :queue_page)
     end
 
+    def destroy
+      RushJob.clear_queue(queue_params[:queue], queue_params[:priority])
+
+      flash[:success] = t(:cleared_queue, queue: queue_params[:queue])
+      redirect_to root_path, status: :see_other
+    end
+
+    private
+
+    def queue_params
+      params.permit(:queue, :priority)
+    end
+
     def redirect_to_first_page
       redirect_to root_path, notice: t(:invalid_page_notice)
     end
