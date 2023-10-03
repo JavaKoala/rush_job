@@ -1,19 +1,19 @@
-import { Controller } from '@hotwired/stimulus'
-import Rails from '@rails/ujs'
+import { Controller } from '@hotwired/stimulus';
+import Rails from '@rails/ujs';
 
 export class RushJobTableUpdateController extends Controller {
   updateJobs() {
-    this.blurTable()
+    this.blurTable();
 
     Rails.ajax({
       url: document.location.href,
       type: 'GET',
-      dataType: 'script'
-    })
+      dataType: 'script',
+    });
   }
 
   blurTable() {
-    let jobs_container = document.getElementById('rush-job-jobs-container')
-    jobs_container.classList.add('table-refresh')
+    const jobsContainer = document.getElementById('rush-job-jobs-container');
+    jobsContainer.classList.add('table-refresh');
   }
 }

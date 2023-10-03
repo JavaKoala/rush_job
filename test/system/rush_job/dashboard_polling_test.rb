@@ -30,5 +30,22 @@ module RushJob
       assert_no_text 'Test server'
       assert_text 'Test queue', count: 1
     end
+
+    test 'stop polling' do
+      visit '/rush_job'
+
+      find(:xpath, "//input[@id='rush-job-polling-range']").set 0
+      find(:xpath, "//input[@id='rush-job-polling']").set true
+
+      assert_text 'Polling time: 3 seconds'
+
+      find(:xpath, "//input[@id='rush-job-polling']").set false
+      @rush_job.delete
+      @no_args_job.delete
+      sleep 4
+
+      assert_text 'Test server', count: 2
+      assert_text 'Test queue', count: 2
+    end
   end
 end
