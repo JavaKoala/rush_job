@@ -34,6 +34,9 @@ module RushJob
 
       assert_current_path '/rush_job/rush_jobs'
       assert_text 'No jobs on that page, redirected to first page.'
+
+      click_button 'Reload'
+      assert_no_text 'No jobs on that page, redirected to first page.'
     end
   end
 end
