@@ -1,0 +1,6 @@
+<%= turbo_stream.replace 'rush_job_jobs_frame',
+    partial: 'jobs_table',
+    locals: {
+      pagy: @pagy,
+      rush_jobs: @rush_jobs
+    } %>

@@ -13,6 +13,11 @@ module RushJob
       @pagy_queue, @job_queues = pagy_array(@queue_groups.keys,
                                             items: 10,
                                             page_param: :queue_page)
+
+      respond_to do |format|
+        format.html
+        format.turbo_stream
+      end
     end
 
     def destroy

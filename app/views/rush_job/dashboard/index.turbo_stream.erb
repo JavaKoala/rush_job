@@ -1,0 +1,9 @@
+<%= turbo_stream.replace 'rush_job_dashboard_frame',
+    partial: 'dashboard_tables',
+    locals: {
+      pagy_locked_jobs: @pagy_locked_jobs,
+      locked_jobs: @locked_jobs,
+      queue_groups: @queue_groups,
+      pagy_queue: @pagy_queue,
+      job_queues: @job_queues
+    } %>
