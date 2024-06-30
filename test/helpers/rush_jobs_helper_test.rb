@@ -17,7 +17,8 @@ module RushJob
       params[:direction] = 'desc'
       params[:sort] = 'id'
 
-      assert_equal '<a class="link-dark" target="_top" href="/rush_job/rush_jobs?direction=asc&amp;sort=priority">Priority</a>',
+      assert_equal '<a class="link-dark" target="_top" ' \
+                   'href="/rush_job/rush_jobs?direction=asc&amp;sort=priority">Priority</a>',
                    sortable('priority')
     end
 
