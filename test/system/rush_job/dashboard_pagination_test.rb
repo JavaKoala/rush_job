@@ -8,7 +8,7 @@ module RushJob
       assert_text 'Test server'
       assert_text 'JobQueue0'
       within '#rush-job-locked-job-pagination' do
-        click_link('Next')
+        click_link_or_button('>')
       end
 
       assert_no_text 'Test server'
@@ -21,7 +21,7 @@ module RushJob
       assert_text 'Test server'
       assert_text 'JobQueue0'
       within '#rush-job-locked-queue-pagination' do
-        click_link('Next')
+        click_link_or_button('>')
       end
 
       assert_text 'Test server'

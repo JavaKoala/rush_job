@@ -18,7 +18,7 @@ module RushJob
       @rush_job.delete
       @no_args_job.delete
 
-      click_button 'Reload'
+      click_link_or_button 'Reload'
 
       assert_no_text 'Test server'
       assert_text 'Test queue', count: 1

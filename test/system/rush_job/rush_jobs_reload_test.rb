@@ -13,14 +13,14 @@ module RushJob
 
       assert_selector '#rush-job-up-arrow'
 
-      click_link 'Id'
+      click_link_or_button 'Id'
 
       assert_selector '#rush-job-down-arrow'
       assert_text 'Penultimate job error'
       assert_text 'Last job error'
 
       @last_job.delete
-      click_button 'Reload'
+      click_link_or_button 'Reload'
 
       assert_selector '#rush-job-down-arrow'
       assert_text 'Penultimate job error'

@@ -7,16 +7,16 @@ module RushJob
 
       assert_no_button 'Clear'
 
-      click_link 'Options'
+      click_link_or_button 'Options'
       accept_confirm do
-        click_button 'Enable Editing'
+        click_link_or_button 'Enable Editing'
       end
 
       assert_button 'Clear'
 
-      click_link 'Options'
+      click_link_or_button 'Options'
       accept_confirm do
-        click_button 'Disable Editing'
+        click_link_or_button 'Disable Editing'
       end
 
       assert_no_button 'Clear'

@@ -4,7 +4,7 @@ module RushJob
 
     scope :locked_jobs, -> { where.not(locked_at: nil).order(locked_at: :desc) }
     scope :queue_groups, -> { group(:queue, :priority).order(:priority).count }
-    scope :queue_group, ->(queue, priority) { where(queue:).and(where(priority:)) }
+    scope :queue_group, ->(queue, priority) { where(queue: queue).and(where(priority: priority)) }
 
     def self.clear_queue(queue, priority)
       queue_group(queue, priority).delete_all

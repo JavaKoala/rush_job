@@ -7,7 +7,7 @@ module RushJob
     def sortable(column)
       direction = column == sort_column && sort_direction == 'asc' ? 'desc' : 'asc'
       link_to t(column),
-              rush_job.rush_jobs_path({ sort: column, direction: }),
+              rush_job.rush_jobs_path({ sort: column, direction: direction }),
               class: "link-#{invert_theme}",
               target: '_top'
     end

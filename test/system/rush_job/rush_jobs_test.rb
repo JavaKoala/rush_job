@@ -16,15 +16,15 @@ module RushJob
       visit '/rush_job/rush_jobs'
       assert_text 'Test queue'
 
-      click_link 'Queue'
+      click_link_or_button 'Queue'
       assert_selector '#rush-job-up-arrow'
       assert_no_text 'Test queue'
       assert_text 'JobQueue'
 
-      click_link 'Next'
+      click_link_or_button '>'
       assert_text 'Test queue'
 
-      click_link 'Queue'
+      click_link_or_button 'Queue'
       assert_selector '#rush-job-down-arrow'
       assert_text 'Test queue'
     end
@@ -35,7 +35,7 @@ module RushJob
       assert_current_path '/rush_job/rush_jobs'
       assert_text 'No jobs on that page, redirected to first page.'
 
-      click_button 'Reload'
+      click_link_or_button 'Reload'
       assert_no_text 'No jobs on that page, redirected to first page.'
     end
   end
