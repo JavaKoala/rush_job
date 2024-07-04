@@ -40,5 +40,8 @@ Open an issue or
       3. `bundle exec brakeman`
   4. Open pull request
 
+## Turbo
+This gem uses turbo-rails, https://github.com/hotwired/turbo-rails. For Rails UJS fork from v0.6.1
+
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
