@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rush_job (0.6.1)
+    rush_job (1.0.0)
       actionview (~> 7.0)
       activerecord (~> 7.0)
       activesupport (~> 7.0)
