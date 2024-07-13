@@ -3,26 +3,30 @@ require 'test_helper'
 module RushJob
   class RushJobsHelperTest < ActionView::TestCase
     test 'sortable column' do
-      assert_equal '<a class="link-dark" href="/rush_job/rush_jobs?direction=desc&amp;sort=id">Id</a>', sortable('id')
+      assert_equal '<a class="link-dark" target="_top" href="/rush_job/rush_jobs?direction=desc&amp;sort=id">Id</a>',
+                   sortable('id')
     end
 
     test 'sortable direction' do
       params[:direction] = 'desc'
-      assert_equal '<a class="link-dark" href="/rush_job/rush_jobs?direction=asc&amp;sort=id">Id</a>', sortable('id')
+      assert_equal '<a class="link-dark" target="_top" href="/rush_job/rush_jobs?direction=asc&amp;sort=id">Id</a>',
+                   sortable('id')
     end
 
     test 'sort different column and direction' do
       params[:direction] = 'desc'
       params[:sort] = 'id'
 
-      assert_equal '<a class="link-dark" href="/rush_job/rush_jobs?direction=asc&amp;sort=priority">Priority</a>',
+      assert_equal '<a class="link-dark" target="_top" ' \
+                   'href="/rush_job/rush_jobs?direction=asc&amp;sort=priority">Priority</a>',
                    sortable('priority')
     end
 
     test 'sortable dark theme' do
       cookies[:rush_job_theme] = 'dark'
 
-      assert_equal '<a class="link-light" href="/rush_job/rush_jobs?direction=desc&amp;sort=id">Id</a>', sortable('id')
+      assert_equal '<a class="link-light" target="_top" href="/rush_job/rush_jobs?direction=desc&amp;sort=id">Id</a>',
+                   sortable('id')
     end
 
     test 'sort arrow is not displayed for unsorted column' do

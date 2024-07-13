@@ -9,19 +9,19 @@ module RushJob
 
       assert_text 'JobQueue0'
 
-      click_link 'Options'
+      click_link_or_button 'Options'
       accept_confirm do
-        click_button 'Enable Editing'
+        click_link_or_button 'Enable Editing'
       end
 
       assert_difference 'RushJob.queue_groups.count', -1 do
         accept_confirm do
-          click_button('Clear', match: :first)
+          click_link_or_button('Clear', match: :first)
         end
 
         assert_text 'Cleared queue JobQueue0'
 
-        click_button 'Reload'
+        click_link_or_button 'Reload'
       end
 
       assert_no_text 'JobQueue0'

@@ -12,7 +12,7 @@ module RushJob
     test 'reload button' do
       visit '/rush_job/rush_jobs'
 
-      click_link 'Id'
+      click_link_or_button 'Id'
       assert_text 'Last job error'
       assert_text 'Penultimate job error'
       assert_text 'Polling time: 13 seconds'

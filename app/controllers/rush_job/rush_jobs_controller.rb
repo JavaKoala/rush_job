@@ -7,6 +7,11 @@ module RushJob
 
     def index
       @pagy, @rush_jobs = pagy(RushJob.order("#{sort_column} #{sort_direction}"))
+
+      respond_to do |format|
+        format.html
+        format.turbo_stream
+      end
     end
 
     private

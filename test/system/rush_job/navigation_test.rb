@@ -12,7 +12,7 @@ module RushJob
 
     test 'navigate to jobs page' do
       visit '/rush_job/'
-      click_link 'Jobs'
+      click_link_or_button 'Jobs'
 
       assert_selector '#rush-job-jobs'
       find_link('Dashboard', class: 'nav-link')
@@ -21,8 +21,8 @@ module RushJob
 
     test 'navigate to dashboard' do
       visit '/rush_job/'
-      click_link 'Jobs'
-      click_link 'Dashboard'
+      click_link_or_button 'Jobs'
+      click_link_or_button 'Dashboard'
 
       assert_selector 'h2', text: 'Locked Jobs'
       find_link('Dashboard', class: 'nav-link active')
@@ -31,8 +31,8 @@ module RushJob
 
     test 'navigate to root path' do
       visit '/rush_job/'
-      click_link 'Jobs'
-      click_link 'Delayed Jobs'
+      click_link_or_button 'Jobs'
+      click_link_or_button 'Delayed Jobs'
 
       assert_selector 'h2', text: 'Locked Jobs'
     end

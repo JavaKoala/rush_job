@@ -1,86 +1,93 @@
-<div id="rush-job-jobs-container"
-     class="jobs-container"
-     role="main">
-  <div class="d-flex justify-content-left">
-    <h2 class="color-<%= invert_theme %>"><%= t :locked_jobs %></h2>
-  </div>
-  <div id="rush-job-dashboard-locked-jobs" class="mb-2 d-flex justify-content-left">
-    <div class="table-responsive">
-      <table class="table
-                    table-bordered
-                    table-striped
-                    table-<%= current_theme %>">
-        <thead>
-          <tr>
-            <th><%= t :id %></th>
-            <th><%= t :locked_at %></th>
-            <th><%= t :locked_by %></th>
-            <th><%= t :job_class %></th>
-            <th><%= t :arguments %></th>
-          </tr>
-        </thead>
-        <tbody class="table-group-divider">
-          <% @locked_jobs.each do |job| %>
-            <tr>
-              <td><%= job.id %></td>
-              <td><%= job.locked_at %></td>
-              <td><%= job.locked_by %></td>
-              <td><%= job.job_class %></td>
-              <td><%= job.job_arguments %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+<%= turbo_frame_tag 'rush_job_dashboard_frame' do %>
+  <div id="rush-job-jobs-container"
+      class="jobs-container"
+      role="main">
+    <div class="d-flex justify-content-left">
+      <h2 class="color-<%= invert_theme %>"><%= t :locked_jobs %></h2>
     </div>
-  </div>
-  <div id="rush-job-locked-job-pagination"
-       class="d-flex justify-content-left"
-       data-bs-theme="<%= current_theme %>">
-    <%== pagy_bootstrap_nav(@pagy_locked_jobs) if @pagy_locked_jobs.pages > 1 %>
-  </div>
-
-  <div class="d-flex justify-content-left">
-    <h2 class="color-<%= invert_theme %>"><%= t :queues %></h2>
-  </div>
-  <div id="rush-job-dashboard-queues" class="d-flex justify-content-left">
-    <div class="table-responsive">
-      <table class="table
-                    table-bordered
-                    table-striped
-                    table-<%= current_theme %>">
-        <thead>
-          <tr>
-            <th><%= t :name %></th>
-            <th><%= t :priority %></th>
-            <th><%= t :count %></th>
-            <% if editing_enabled? %>
-              <th><%= t :clear %></th>
-            <% end %>
-          </tr>
-        </thead>
-        <tbody class="table-group-divider">
-          <% @job_queues.each do |queue| %>
+    <div id="rush-job-dashboard-locked-jobs" class="mb-2 d-flex justify-content-left">
+      <div class="table-responsive">
+        <table class="table
+                      table-bordered
+                      table-striped
+                      table-<%= current_theme %>">
+          <thead>
             <tr>
-              <td><%= queue[0] %></td>
-              <td><%= queue[1] %></td>
-              <td><%= @queue_groups[queue] %></td>
+              <th><%= t :id %></th>
+              <th><%= t :locked_at %></th>
+              <th><%= t :locked_by %></th>
+              <th><%= t :job_class %></th>
+              <th><%= t :arguments %></th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <% @locked_jobs.each do |job| %>
+              <tr>
+                <td><%= job.id %></td>
+                <td><%= job.locked_at %></td>
+                <td><%= job.locked_by %></td>
+                <td><%= job.job_class %></td>
+                <td><%= job.job_arguments %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="rush-job-locked-job-pagination"
+        class="d-flex justify-content-left"
+        data-bs-theme="<%= current_theme %>">
+      <%== pagy_bootstrap_nav(@pagy_locked_jobs) if @pagy_locked_jobs.pages > 1 %>
+    </div>
+
+    <div class="d-flex justify-content-left">
+      <h2 class="color-<%= invert_theme %>"><%= t :queues %></h2>
+    </div>
+    <div id="rush-job-dashboard-queues" class="d-flex justify-content-left">
+      <div class="table-responsive">
+        <table class="table
+                      table-bordered
+                      table-striped
+                      table-<%= current_theme %>">
+          <thead>
+            <tr>
+              <th><%= t :name %></th>
+              <th><%= t :priority %></th>
+              <th><%= t :count %></th>
               <% if editing_enabled? %>
-                <td><%= button_to t(:clear),
-                                  dashboard_path,
-                                  class: "btn btn-danger btn-sm",
-                                  method: :delete,
-                                  params: { queue: queue[0], priority: queue[1] },
-                                  data: { confirm: t(:clear_queue_confirmation, queue: queue[0]) } %></td>
+                <th><%= t :clear %></th>
               <% end %>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody class="table-group-divider">
+            <% @job_queues.each do |queue| %>
+              <tr>
+                <td><%= queue[0] %></td>
+                <td><%= queue[1] %></td>
+                <td><%= @queue_groups[queue] %></td>
+                <% if editing_enabled? %>
+                  <td><%= button_to t(:clear),
+                                    dashboard_path,
+                                    class: "btn btn-danger btn-sm",
+                                    method: :delete,
+                                    params: { queue: queue[0], priority: queue[1] },
+                                    data: {
+                                      turbo: false,
+                                      controller: 'rush-job-confirm',
+                                      action: 'click->rush-job-confirm#displayConfirm',
+                                      confirm_message: t(:clear_queue_confirmation, queue: queue[0])
+                                    } %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="rush-job-locked-queue-pagination"
+        class="d-flex justify-content-left"
+        data-bs-theme="<%= current_theme %>">
+      <%== pagy_bootstrap_nav(@pagy_queue) if @pagy_queue.pages > 1 %>
     </div>
   </div>
-  <div id="rush-job-locked-queue-pagination"
-       class="d-flex justify-content-left"
-       data-bs-theme="<%= current_theme %>">
-    <%== pagy_bootstrap_nav(@pagy_queue) if @pagy_queue.pages > 1 %>
-  </div>
-</div>
+<% end %>
