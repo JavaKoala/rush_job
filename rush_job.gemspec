@@ -23,27 +23,27 @@ Gem::Specification.new do |spec|
     Dir['{app,config,db,lib,vendor}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
   end
 
-  spec.add_dependency 'actionview', '~> 7.0'
-  spec.add_dependency 'activerecord', '~> 7.0'
-  spec.add_dependency 'activesupport', '~> 7.0'
+  spec.add_dependency 'actionview', '~> 8.0'
+  spec.add_dependency 'activerecord', '~> 8.0'
+  spec.add_dependency 'activesupport', '~> 8.0'
   spec.add_dependency 'delayed_job', '~> 4.1'
   spec.add_dependency 'delayed_job_active_record', '~> 4.1'
   spec.add_dependency 'importmap-rails', '~> 2.0'
-  spec.add_dependency 'pagy', '~> 9.0'
+  spec.add_dependency 'pagy', '~> 9.3'
   spec.add_dependency 'sassc-rails', '~> 2.1'
   spec.add_dependency 'turbo-rails', '~> 2.0'
 
   spec.add_development_dependency 'brakeman', '~> 6.2'
   spec.add_development_dependency 'capybara', '~> 3.40'
   spec.add_development_dependency 'debug', '~> 1.9'
-  spec.add_development_dependency 'puma', '~> 6.4'
+  spec.add_development_dependency 'puma', '~> 6.5'
   spec.add_development_dependency 'rubocop-capybara', '~> 2.21'
   spec.add_development_dependency 'rubocop-minitest', '~> 0.36.0'
-  spec.add_development_dependency 'rubocop-rails', '~> 2.26'
-  spec.add_development_dependency 'selenium-webdriver', '~> 4.25'
+  spec.add_development_dependency 'rubocop-rails', '~> 2.27'
+  spec.add_development_dependency 'selenium-webdriver', '~> 4.27'
   spec.add_development_dependency 'simplecov', '~> 0.22.0'
   spec.add_development_dependency 'sprockets-rails', '~> 3.5'
-  spec.add_development_dependency 'sqlite3', '~> 1.4'
+  spec.add_development_dependency 'sqlite3', '~> 2.3'
 
   spec.metadata['rubygems_mfa_required'] = 'true'
 end
