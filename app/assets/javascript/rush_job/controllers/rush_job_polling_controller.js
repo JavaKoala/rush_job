@@ -16,9 +16,7 @@ export default class extends RushJobTableUpdateController {
     const pollingTimeTargetHtml = this.pollingTimeLabelTarget.innerHTML;
     const pollingLabelUpdate = pollingTimeTargetHtml.replace(pollingLabelRegex, this.pollingTime());
     this.pollingTimeLabelTarget.innerHTML = pollingLabelUpdate;
-    if (progressInterveralID) {
-      clearInterval(progressInterveralID);
-    }
+    this.clearProgressInterval();
   }
 
   pollingToggle() {
@@ -47,9 +45,7 @@ export default class extends RushJobTableUpdateController {
       clearInterval(intervalID);
     }
 
-    if (progressInterveralID) {
-      clearInterval(progressInterveralID);
-    }
+    this.clearProgressInterval();
   }
 
   pollingTime() {
@@ -60,9 +56,7 @@ export default class extends RushJobTableUpdateController {
   }
 
   startProgress() {
-    if (progressInterveralID) {
-      clearInterval(progressInterveralID);
-    }
+    this.clearProgressInterval();
     let progressInterval = 100;
 
     progressInterveralID = setInterval(() => {
@@ -70,5 +64,11 @@ export default class extends RushJobTableUpdateController {
       progressInterval -= 1;
       console.log(progressInterval);
     }, this.pollingTime() * 10);
+  }
+
+  clearProgressInterval() {
+    if (progressInterveralID) {
+      clearInterval(progressInterveralID);
+    }
   }
 }
