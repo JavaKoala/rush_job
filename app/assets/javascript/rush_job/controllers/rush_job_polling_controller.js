@@ -58,12 +58,18 @@ export default class extends RushJobTableUpdateController {
   startProgress() {
     this.clearProgressInterval();
     let progressInterval = 100;
+    let progressPrecent = 1;
+    let progressIntervalTime = this.pollingTime() * 10;
+    if (this.pollingTime() < 13) {
+      progressPrecent = 10;
+      progressIntervalTime = progressIntervalTime * 10;
+    }
 
     progressInterveralID = setInterval(() => {
-      this.progressBarProgressTarget.style = `width: ${progressInterval - 1}%;`;
-      progressInterval -= 1;
+      this.progressBarProgressTarget.style = `width: ${progressInterval - progressPrecent}%;`;
+      progressInterval -= progressPrecent;
       console.log(progressInterval);
-    }, this.pollingTime() * 10);
+    }, progressIntervalTime);
   }
 
   clearProgressInterval() {
