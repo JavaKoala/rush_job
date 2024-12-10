@@ -3,7 +3,7 @@ import { RushJobTableUpdateController } from './rush_job_table_update_controller
 let intervalID;
 
 export default class extends RushJobTableUpdateController {
-  static targets = ['pollingTime', 'pollingTimeLabel', 'pollingSlide'];
+  static targets = ['pollingTime', 'pollingTimeLabel', 'pollingSlide', 'progressBar'];
 
   connect() {
     this.pollingChange();
@@ -22,8 +22,10 @@ export default class extends RushJobTableUpdateController {
 
     if (pollingSlide.checked === true) {
       this.startPolling();
+      this.progressBarTarget.style = 'height: 7px;';
     } else {
       this.stopPolling();
+      this.progressBarTarget.style = 'display: none;';
     }
   }
 
