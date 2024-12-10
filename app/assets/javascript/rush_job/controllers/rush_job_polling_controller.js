@@ -66,8 +66,10 @@ export default class extends RushJobTableUpdateController {
     }
 
     progressInterveralID = setInterval(() => {
-      this.progressBarProgressTarget.style = `width: ${progressInterval - progressPrecent}%;`;
       progressInterval -= progressPrecent;
+      this.progressBarProgressTarget.style = `width: ${progressInterval}%;`;
+      this.progressBarTarget.setAttribute('aria-valuenow', progressInterval);
+      
     }, progressIntervalTime);
   }
 
