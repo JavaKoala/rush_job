@@ -1,9 +1,10 @@
 import { RushJobTableUpdateController } from './rush_job_table_update_controller';
 
 let intervalID;
+let progressInterveralID;
 
 export default class extends RushJobTableUpdateController {
-  static targets = ['pollingTime', 'pollingTimeLabel', 'pollingSlide', 'progressBar'];
+  static targets = ['pollingTime', 'pollingTimeLabel', 'pollingSlide', 'progressBar', 'progressBarProgress'];
 
   connect() {
     this.pollingChange();
@@ -15,6 +16,9 @@ export default class extends RushJobTableUpdateController {
     const pollingTimeTargetHtml = this.pollingTimeLabelTarget.innerHTML;
     const pollingLabelUpdate = pollingTimeTargetHtml.replace(pollingLabelRegex, this.pollingTime());
     this.pollingTimeLabelTarget.innerHTML = pollingLabelUpdate;
+    if (progressInterveralID) {
+      clearInterval(progressInterveralID);
+    }
   }
 
   pollingToggle() {
@@ -31,6 +35,7 @@ export default class extends RushJobTableUpdateController {
 
   startPolling() {
     this.updateJobs();
+    this.startProgress();
 
     intervalID = setTimeout(() => {
       this.startPolling();
@@ -41,6 +46,10 @@ export default class extends RushJobTableUpdateController {
     if (intervalID) {
       clearInterval(intervalID);
     }
+
+    if (progressInterveralID) {
+      clearInterval(progressInterveralID);
+    }
   }
 
   pollingTime() {
@@ -48,5 +57,18 @@ export default class extends RushJobTableUpdateController {
     const pollingTime = this.pollingTimeTarget.value || 3;
 
     return pollingTimes[pollingTime];
+  }
+
+  startProgress() {
+    if (progressInterveralID) {
+      clearInterval(progressInterveralID);
+    }
+    let progressInterval = 100;
+
+    progressInterveralID = setInterval(() => {
+      this.progressBarProgressTarget.style = `width: ${progressInterval - 1}%;`;
+      progressInterval -= 1;
+      console.log(progressInterval);
+    }, this.pollingTime() * 10);
   }
 }
