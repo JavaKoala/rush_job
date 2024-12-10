@@ -16,6 +16,7 @@ module RushJob
       assert_text 'Last job error'
       assert_text 'Penultimate job error'
       assert_text 'Polling time: 13 seconds'
+      assert_no_selector '#rush-job-polling-progress'
 
       @penultimate_job.delete
 
@@ -24,6 +25,7 @@ module RushJob
 
       assert_text 'Polling time: 3 seconds'
       assert_no_text 'Penultimate job error'
+      assert_selector '#rush-job-polling-progress'
 
       @last_job.delete
       sleep 4
