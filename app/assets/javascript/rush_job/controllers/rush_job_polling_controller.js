@@ -32,8 +32,8 @@ export default class extends RushJobTableUpdateController {
   }
 
   startPolling() {
-    this.updateJobs();
     this.startProgress();
+    this.updateJobs();
 
     intervalID = setTimeout(() => {
       this.startPolling();
