@@ -16,7 +16,6 @@ export default class extends RushJobTableUpdateController {
     const pollingTimeTargetHtml = this.pollingTimeLabelTarget.innerHTML;
     const pollingLabelUpdate = pollingTimeTargetHtml.replace(pollingLabelRegex, this.pollingTime());
     this.pollingTimeLabelTarget.innerHTML = pollingLabelUpdate;
-    this.clearProgressInterval();
   }
 
   pollingToggle() {
@@ -69,7 +68,6 @@ export default class extends RushJobTableUpdateController {
       progressInterval -= progressPrecent;
       this.progressBarProgressTarget.style = `width: ${progressInterval}%;`;
       this.progressBarTarget.setAttribute('aria-valuenow', progressInterval);
-      
     }, progressIntervalTime);
   }
 
