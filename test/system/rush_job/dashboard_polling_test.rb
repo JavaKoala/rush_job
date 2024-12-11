@@ -14,6 +14,7 @@ module RushJob
 
       assert_text 'Test server', count: 2
       assert_text 'Test queue', count: 2
+      assert_no_selector '#rush-job-polling-progress'
 
       @rush_job.delete
 
@@ -23,6 +24,7 @@ module RushJob
       assert_text 'Polling time: 3 seconds'
       assert_text 'Test server', count: 1
       assert_text 'Test queue', count: 1
+      assert_selector '#rush-job-polling-progress'
 
       @no_args_job.delete
       sleep 4

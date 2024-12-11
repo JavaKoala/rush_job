@@ -1,9 +1,10 @@
 import { RushJobTableUpdateController } from './rush_job_table_update_controller';
 
 let intervalID;
+let progressInterveralID;
 
 export default class extends RushJobTableUpdateController {
-  static targets = ['pollingTime', 'pollingTimeLabel', 'pollingSlide'];
+  static targets = ['pollingTime', 'pollingTimeLabel', 'pollingSlide', 'progressBar', 'progressBarProgress'];
 
   connect() {
     this.pollingChange();
@@ -22,12 +23,15 @@ export default class extends RushJobTableUpdateController {
 
     if (pollingSlide.checked === true) {
       this.startPolling();
+      this.progressBarTarget.style = 'height: 7px;';
     } else {
       this.stopPolling();
+      this.progressBarTarget.style = 'display: none;';
     }
   }
 
   startPolling() {
+    this.startProgress();
     this.updateJobs();
 
     intervalID = setTimeout(() => {
@@ -39,6 +43,8 @@ export default class extends RushJobTableUpdateController {
     if (intervalID) {
       clearInterval(intervalID);
     }
+
+    this.clearProgressInterval();
   }
 
   pollingTime() {
@@ -46,5 +52,30 @@ export default class extends RushJobTableUpdateController {
     const pollingTime = this.pollingTimeTarget.value || 3;
 
     return pollingTimes[pollingTime];
+  }
+
+  startProgress() {
+    this.clearProgressInterval();
+
+    let progressInterval = 100;
+    let progressPrecent = 1;
+    let progressIntervalTime = this.pollingTime() * 10;
+
+    if (progressIntervalTime < 130) {
+      progressPrecent = 10;
+      progressIntervalTime = progressIntervalTime * 10;
+    }
+
+    progressInterveralID = setInterval(() => {
+      progressInterval -= progressPrecent;
+      this.progressBarProgressTarget.style = `width: ${progressInterval}%;`;
+      this.progressBarTarget.setAttribute('aria-valuenow', progressInterval);
+    }, progressIntervalTime);
+  }
+
+  clearProgressInterval() {
+    if (progressInterveralID) {
+      clearInterval(progressInterveralID);
+    }
   }
 }
