@@ -1,4 +1,4 @@
-import { RushJobTableUpdateController } from './rush_job_table_update_controller';
+import { RushJobTableUpdateController } from 'rush_job/controllers/rush_job_table_update_controller';
 
 let intervalID;
 let progressInterveralID;
