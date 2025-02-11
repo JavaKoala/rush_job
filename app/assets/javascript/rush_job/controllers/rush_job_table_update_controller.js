@@ -23,7 +23,7 @@ export class RushJobTableUpdateController extends Controller {
 
   blurTable() {
     const jobsContainer = document.getElementById('rush-job-jobs-container');
-    jobsContainer.classList.add('table-refresh');
+    jobsContainer.classList.add('opacity-25');
   }
 
   clearFlash() {
