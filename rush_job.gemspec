@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'delayed_job_active_record', '~> 4.1'
   spec.add_dependency 'importmap-rails', '~> 2.1'
   spec.add_dependency 'pagy', '~> 9.3'
-  spec.add_dependency 'sassc-rails', '~> 2.1'
+  spec.add_dependency 'propshaft', '~> 1.1'
   spec.add_dependency 'turbo-rails', '~> 2.0'
 
   spec.add_development_dependency 'brakeman', '~> 6.2'
@@ -42,7 +42,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rails', '~> 2.27'
   spec.add_development_dependency 'selenium-webdriver', '~> 4.27'
   spec.add_development_dependency 'simplecov', '~> 0.22.0'
-  spec.add_development_dependency 'sprockets-rails', '~> 3.5'
   spec.add_development_dependency 'sqlite3', '~> 2.3'
 
   spec.metadata['rubygems_mfa_required'] = 'true'
