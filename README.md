@@ -1,8 +1,10 @@
 # RushJob
 User interface for Delayed Job (https://github.com/collectiveidea/delayed_job) in Ruby on Rails 
 
-<img width="656" alt="Dashboard" src="docs/assets/dashboard.png">
-<img width="1244" alt="Jobs" src="docs/assets/jobs.png">
+<img alt="Light dashboard" src="docs/assets/light-dashboard.gif">
+<img alt="Light jobs" src="docs/assets/light-jobs.png">
+<img alt="Dark dashboard" src="docs/assets/dark-dashboard.gif">
+<img alt="Dark jobs" src="docs/assets/dark-jobs.png">
 
 ### Note
  - This has only been tested with SQLite and Postgresql.
@@ -17,7 +19,7 @@ Navigate to the `/rush_job` route in your application to see the Delayed Jobs. L
 Add this line to your Ruby on Rails application's Gemfile:
 
 ```ruby
-gem 'rush_job', '~> 1.2'
+gem 'rush_job', '~> 1.3'
 ```
 
 And then execute:
@@ -39,6 +41,11 @@ Open an issue or
       2. `bundle exec rubocop`
       3. `bundle exec brakeman`
   4. Open pull request
+
+## Propshaft
+This gem uses propshaft, https://github.com/rails/propshaft, and uses a CDN for Bootstrap CSS https://www.jsdelivr.com/package/npm/bootswatch
+
+For the previous bundled CSS and sprockets frok from v1.2.0
 
 ## Turbo
 This gem uses turbo-rails, https://github.com/hotwired/turbo-rails. For Rails UJS fork from v0.6.1

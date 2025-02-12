@@ -9,15 +9,18 @@
   <%= javascript_importmap_tags %>
   <%= javascript_import_module_tag "rush_job/application" %>
 
-  <%= stylesheet_link_tag    "rush_job/application", media: "all" %>
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/spacelab/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="background-color-<%= current_theme %>">
-  <%= render 'layouts/rush_job/navbar' %>
-  <div id="rush-job-flash-messages">
-    <%= render 'layouts/rush_job/flash_messages' %>
-  </div>
+<body data-bs-theme="<%= current_theme %>">
+  <header>
+    <%= render 'layouts/rush_job/navbar' %>
+    <div id="rush-job-flash-messages">
+      <%= render 'layouts/rush_job/flash_messages' %>
+    </div>
+  </header>
 
-<%= yield %>
-
+  <main class="mx-4">
+    <%= yield %>
+  </main>
 </body>
 </html>

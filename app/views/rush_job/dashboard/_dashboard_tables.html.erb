@@ -1,9 +1,7 @@
 <%= turbo_frame_tag 'rush_job_dashboard_frame' do %>
-  <div id="rush-job-jobs-container"
-      class="jobs-container"
-      role="main">
+  <div id="rush-job-jobs-container" role="main">
     <div class="d-flex justify-content-left">
-      <h2 class="color-<%= invert_theme %>"><%= t :locked_jobs %></h2>
+      <h2 class="text-<%= invert_theme %>"><%= t :locked_jobs %></h2>
     </div>
     <div id="rush-job-dashboard-locked-jobs" class="mb-2 d-flex justify-content-left">
       <div class="table-responsive">
@@ -41,7 +39,7 @@
     </div>
 
     <div class="d-flex justify-content-left">
-      <h2 class="color-<%= invert_theme %>"><%= t :queues %></h2>
+      <h2 class="text-<%= invert_theme %>"><%= t :queues %></h2>
     </div>
     <div id="rush-job-dashboard-queues" class="d-flex justify-content-left">
       <div class="table-responsive">

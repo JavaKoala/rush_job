@@ -1,8 +1,8 @@
-<div class="polling-container" data-controller="rush-job-polling">
+<div data-controller="rush-job-polling">
   <div class="row align-items-center">
     <div class="col-3">
       <label for="rush-job-polling-range"
-             class="polling-range-form-label-<%= invert_theme %>"
+             class="mb-2"
              data-rush-job-polling-target="pollingTimeLabel">
         <%= t :polling_time %> 13 <%= t :polling_time_unit %>
       </label>
@@ -35,7 +35,7 @@
                role="switch"
                data-rush-job-polling-target="pollingSlide"
                data-action="input->rush-job-polling#pollingToggle">
-        <label class="form-check-label-<%= invert_theme %>" for="rush-job-polling"><%= t :enable_polling %></label>
+        <label for="rush-job-polling"><%= t :enable_polling %></label>
       </div>
     </div>
     <div class="col-3" data-controller="rush-job-reload-jobs-table">
