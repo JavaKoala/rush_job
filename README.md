@@ -1,8 +1,10 @@
 # RushJob
 User interface for Delayed Job (https://github.com/collectiveidea/delayed_job) in Ruby on Rails 
 
-<img width="656" alt="Dashboard" src="docs/assets/dashboard.png">
-<img width="1244" alt="Jobs" src="docs/assets/jobs.png">
+<img alt="Light dashboard" src="docs/assets/light-dashboard.gif">
+<img alt="Light jobs" src="docs/assets/light-jobs.png">
+<img alt="Dark dashboard" src="docs/assets/dark-dashboard.gif">
+<img alt="Dark jobs" src="docs/assets/dark-jobs.png">
 
 ### Note
  - This has only been tested with SQLite and Postgresql.
