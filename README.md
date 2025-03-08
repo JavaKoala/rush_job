@@ -45,7 +45,7 @@ Open an issue or
 ## Propshaft
 This gem uses propshaft, https://github.com/rails/propshaft, and uses a CDN for Bootstrap CSS https://www.jsdelivr.com/package/npm/bootswatch
 
-For the previous bundled CSS and sprockets frok from v1.2.0
+For the previous bundled CSS and sprockets fork from v1.2.0
 
 ## Turbo
 This gem uses turbo-rails, https://github.com/hotwired/turbo-rails. For Rails UJS fork from v0.6.1
