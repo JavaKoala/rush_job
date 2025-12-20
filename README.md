@@ -38,6 +38,7 @@ Open an issue or
   2. Update
   3. Test
       1. `bundle exec rails app:test:all` and check coverage in `test/coverage/index.html`
+        - `bundle exec rails app:test:all NO_SANDBOX=true` when running as root
       2. `bundle exec rubocop`
       3. `bundle exec brakeman`
   4. Open pull request
