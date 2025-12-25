@@ -5,10 +5,10 @@ module RushJob
     rescue_from Pagy::RangeError, with: :redirect_to_first_page
 
     def index
-      @pagy_locked_jobs, @locked_jobs = pagy(RushJob.locked_jobs, items: 10, page_param: :locked_jobs_page,
+      @pagy_locked_jobs, @locked_jobs = pagy(RushJob.locked_jobs, items: 10, page_key: 'locked_jobs_page',
                                                                   raise_range_error: true)
       @queue_groups = RushJob.queue_groups
-      @pagy_queue, @job_queues = pagy(:offset, @queue_groups.keys, items: 10, page_param: :queue_page,
+      @pagy_queue, @job_queues = pagy(:offset, @queue_groups.keys, items: 10, page_key: 'queue_page',
                                                                    raise_range_error: true)
 
       respond_to do |format|
