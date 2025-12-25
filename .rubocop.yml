@@ -1,6 +1,6 @@
-require:
- - rubocop-rails
- - rubocop-capybara
+plugins:
+  - rubocop-rails
+  - rubocop-capybara
 
 AllCops:
   NewCops: enable
