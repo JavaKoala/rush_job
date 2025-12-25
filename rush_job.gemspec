@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'delayed_job', '~> 4.1'
   spec.add_dependency 'delayed_job_active_record', '~> 4.1'
   spec.add_dependency 'importmap-rails', '~> 2.1'
-  spec.add_dependency 'pagy', '~> 9.3'
+  spec.add_dependency 'pagy', '~> 43.2'
   spec.add_dependency 'propshaft', '~> 1.1'
   spec.add_dependency 'turbo-rails', '~> 2.0'
 

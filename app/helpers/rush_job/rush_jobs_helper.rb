@@ -2,7 +2,6 @@ module RushJob
   module RushJobsHelper
     include ApplicationHelper
     include SortHelper
-    include Pagy::Frontend
 
     def sortable(column)
       direction = column == sort_column && sort_direction == 'asc' ? 'desc' : 'asc'
