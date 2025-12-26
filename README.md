@@ -19,7 +19,7 @@ Navigate to the `/rush_job` route in your application to see the Delayed Jobs. L
 Add this line to your Ruby on Rails application's Gemfile:
 
 ```ruby
-gem 'rush_job', '~> 1.3'
+gem 'rush_job', '~> 1.4'
 ```
 
 And then execute:

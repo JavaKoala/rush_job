@@ -1,8 +1,6 @@
 module RushJob
   require 'importmap-rails'
   require 'pagy'
-  require 'pagy/extras/array'
-  require 'pagy/extras/bootstrap'
   require 'propshaft'
 
   class Engine < ::Rails::Engine

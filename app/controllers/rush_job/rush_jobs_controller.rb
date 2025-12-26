@@ -1,12 +1,12 @@
 module RushJob
   class RushJobsController < ApplicationController
     include SortHelper
-    include Pagy::Backend
+    include Pagy::Method
 
-    rescue_from Pagy::OverflowError, with: :redirect_to_first_page
+    rescue_from Pagy::RangeError, with: :redirect_to_first_page
 
     def index
-      @pagy, @rush_jobs = pagy(RushJob.order("#{sort_column} #{sort_direction}"))
+      @pagy, @rush_jobs = pagy(RushJob.order("#{sort_column} #{sort_direction}"), raise_range_error: true)
 
       respond_to do |format|
         format.html

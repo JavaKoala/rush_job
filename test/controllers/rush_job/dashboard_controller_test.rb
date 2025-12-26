@@ -3,6 +3,7 @@ require 'test_helper'
 module RushJob
   class DashboardControllerTest < ActionDispatch::IntegrationTest
     include Engine.routes.url_helpers
+
     self.use_transactional_tests = true
 
     setup do

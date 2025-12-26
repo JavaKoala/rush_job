@@ -35,7 +35,7 @@
     <div id="rush-job-locked-job-pagination"
         class="d-flex justify-content-left"
         data-bs-theme="<%= current_theme %>">
-      <%== pagy_bootstrap_nav(@pagy_locked_jobs) if @pagy_locked_jobs.pages > 1 %>
+      <%== @pagy_locked_jobs.series_nav(:bootstrap) if @pagy_locked_jobs.pages > 1 %>
     </div>
 
     <div class="d-flex justify-content-left">
@@ -85,7 +85,7 @@
     <div id="rush-job-locked-queue-pagination"
         class="d-flex justify-content-left"
         data-bs-theme="<%= current_theme %>">
-      <%== pagy_bootstrap_nav(@pagy_queue) if @pagy_queue.pages > 1 %>
+      <%== @pagy_queue.series_nav(:bootstrap) if @pagy_queue.pages > 1 %>
     </div>
   </div>
 <% end %>
