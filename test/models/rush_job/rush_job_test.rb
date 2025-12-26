@@ -12,7 +12,7 @@ module RushJob
 
     test 'locked_jobs' do
       assert_includes RushJob.locked_jobs, @rush_job
-      assert_not RushJob.locked_jobs.include?(@unlocked_job)
+      assert_not_includes RushJob.locked_jobs, @unlocked_job
     end
 
     test 'locked_jobs order' do
