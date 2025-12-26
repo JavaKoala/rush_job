@@ -14,7 +14,7 @@ module RushJob
       patch settings_url, params: { setting: 'theme' }
 
       assert_redirected_to root_path
-      assert_equal cookies[:rush_job_theme], 'dark'
+      assert_equal 'dark', cookies[:rush_job_theme]
     end
 
     test 'should change theme if present' do
@@ -22,13 +22,13 @@ module RushJob
 
       patch settings_url, params: { setting: 'theme' }
 
-      assert_equal cookies[:rush_job_theme], 'light'
+      assert_equal 'light', cookies[:rush_job_theme]
     end
 
     test 'should enable editing' do
       patch settings_url, params: { setting: 'editing' }
 
-      assert_equal cookies[:rush_job_editing], 'enabled'
+      assert_equal 'enabled', cookies[:rush_job_editing]
     end
 
     test 'should disable editing' do
@@ -36,7 +36,7 @@ module RushJob
 
       patch settings_url, params: { setting: 'editing' }
 
-      assert_equal cookies[:rush_job_editing], 'disabled'
+      assert_equal 'disabled', cookies[:rush_job_editing]
     end
 
     test 'should not change non-existing setting' do

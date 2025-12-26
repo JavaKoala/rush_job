@@ -17,3 +17,6 @@ Style/Documentation:
 
 Gemspec/RequiredRubyVersion:
   Enabled: false
+
+Minitest/MultipleAssertions:
+  Enabled: false

@@ -11,7 +11,7 @@ module RushJob
     end
 
     test 'locked_jobs' do
-      assert RushJob.locked_jobs.include?(@rush_job)
+      assert_includes RushJob.locked_jobs, @rush_job
       assert_not RushJob.locked_jobs.include?(@unlocked_job)
     end
 
@@ -20,13 +20,13 @@ module RushJob
     end
 
     test 'queue_groups' do
-      assert_equal RushJob.queue_groups[['Test queue', 0]], 1
-      assert_equal RushJob.queue_groups[['Test queue', 1]], 3
+      assert_equal 1, RushJob.queue_groups[['Test queue', 0]]
+      assert_equal 3, RushJob.queue_groups[['Test queue', 1]]
     end
 
     test 'queue_groups order' do
-      assert_equal RushJob.queue_groups.first, [['JobQueue0', 0], 1]
-      assert_equal RushJob.queue_groups.to_a.last, [['JobQueue24', 24], 1]
+      assert_equal [['JobQueue0', 0], 1], RushJob.queue_groups.first
+      assert_equal [['JobQueue24', 24], 1], RushJob.queue_groups.to_a.last
     end
 
     test 'queue_group' do
@@ -37,19 +37,20 @@ module RushJob
 
     test 'clear_queue' do
       RushJob.clear_queue(@rush_job.queue, @rush_job.priority)
+
       assert_empty RushJob.queue_group(@rush_job.queue, @rush_job.priority)
     end
 
     test 'job_class returns the class of the job' do
-      assert_equal @rush_job.job_class, 'TestHandler'
+      assert_equal 'TestHandler', @rush_job.job_class
     end
 
     test 'job_arguments returns the arguments of the job' do
-      assert_equal @rush_job.job_arguments, ['arg1']
+      assert_equal ['arg1'], @rush_job.job_arguments
     end
 
     test 'job_arguments returns empty string for empty arguments' do
-      assert_equal @no_args_job.job_arguments, ''
+      assert_equal '', @no_args_job.job_arguments
     end
   end
 end

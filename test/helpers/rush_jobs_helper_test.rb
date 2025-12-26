@@ -9,6 +9,7 @@ module RushJob
 
     test 'sortable direction' do
       params[:direction] = 'desc'
+
       assert_equal '<a class="link-dark" target="_top" href="/rush_job/rush_jobs?direction=asc&amp;sort=id">Id</a>',
                    sortable('id')
     end
