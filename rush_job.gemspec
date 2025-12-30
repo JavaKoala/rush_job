@@ -35,7 +35,9 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'brakeman', '~> 7.1'
   spec.add_development_dependency 'capybara', '~> 3.40'
+  spec.add_development_dependency 'cgi', '~> 0.5.1'
   spec.add_development_dependency 'debug', '~> 1.11'
+  spec.add_development_dependency 'minitest', '~> 5.27'
   spec.add_development_dependency 'puma', '~> 7.1'
   spec.add_development_dependency 'rubocop-capybara', '~> 2.22'
   spec.add_development_dependency 'rubocop-minitest', '~> 0.38.2'
